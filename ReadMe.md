@@ -1,12 +1,7 @@
 Rotten Tomatoes (raw)
 This is a movies app displaying box office and top rental DVDs using the Rotten Tomatoes API.
 
-<<<<<<< HEAD
 Time spent: 16
-=======
-Time spent: 14
-
->>>>>>> origin/master
 Features
 
 Required
@@ -28,5 +23,3 @@ Optional
 
 Walkthrough
 https://github.com/rohitcj/RottenTomatoes/blob/master/RottenTomatoes.gif
-=======
->>>>>>> origin/master
