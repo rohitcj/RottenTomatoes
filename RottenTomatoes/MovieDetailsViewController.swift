@@ -11,8 +11,10 @@ import UIKit
 class MovieDetailsViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var synopsisLabel: UILabel!
+    @IBOutlet weak var audienceScoreLabel: UILabel!
+    @IBOutlet weak var criticsScoreLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var synopsisTextView: UITextView!
     
     var movie: NSDictionary!
     
@@ -20,30 +22,40 @@ class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        titleLabel.text = movie["title"] as? String
-        synopsisLabel.text = movie["synopsis"] as? String
+        var title: String = movie["title"] as! String
+        var rating: String = movie["mpaa_rating"] as! String
+        var ratings: NSDictionary = (movie["ratings"] as? NSDictionary)!
+        var audienceScore: Int = (ratings["audience_score"] as? Int)!
+        var criticsScore: Int = (ratings["critics_score"] as? Int)!
         
-        var posterImageUrlString: String = movie.valueForKeyPath("posters.original") as! String
+        self.title = title
+        titleLabel.text! = "\(title) [\(rating)]"
+        audienceScoreLabel.text = "Audience Score: \(audienceScore)"
+        criticsScoreLabel.text = "Critics Score: \(criticsScore)"
+        synopsisTextView.text = movie["synopsis"] as? String
         
-        var range = posterImageUrlString.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
+        var posterImageUrlStringLowRes: String = movie.valueForKeyPath("posters.original") as! String
+        
+        var posterImageUrlStringHighRes: String = String()
+        var range = posterImageUrlStringLowRes.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
         if let range = range {
-            posterImageUrlString = posterImageUrlString.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
+            posterImageUrlStringHighRes = posterImageUrlStringLowRes.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
         }
         
-        // let posterImageUrl = NSURL(string: movie.valueForKeyPath("posters.original") as! String)!
-        let posterImageUrl = NSURL(string: posterImageUrlString)!
-
-        posterImageView.setImageWithURL(posterImageUrl)
+        // load the low-res image first
+        let posterImageUrlLowRes: NSURL = NSURL(string: posterImageUrlStringLowRes)!
+        posterImageView.setImageWithURL(posterImageUrlLowRes)
         
-        let posterImageUrlRequest = NSURLRequest(URL: posterImageUrl)
-        
+        // then load the high-rest image
+        let posterImageUrlHighRes: NSURL = NSURL(string: posterImageUrlStringHighRes)!
+        let posterImageUrlRequest = NSURLRequest(URL: posterImageUrlHighRes)
         posterImageView.setImageWithURLRequest(posterImageUrlRequest, placeholderImage: UIImage(named: "Loading"),
             success: { (urlRequest: NSURLRequest!, urlResponse: NSHTTPURLResponse!, image: UIImage!) ->
                 Void in
                 var transition = CATransition()
                 transition.type = kCATransitionFade;
                 transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-                transition.duration = 0.1;
+                transition.duration = 1;
                 self.posterImageView.layer.addAnimation(transition, forKey: nil)
                 self.posterImageView.image = image
             },

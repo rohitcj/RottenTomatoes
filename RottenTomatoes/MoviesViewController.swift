@@ -19,13 +19,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     // views/controls
     var refreshControl: UIRefreshControl = UIRefreshControl()
-    var searchController: UISearchController!
     
     // variables
     var movies: [NSDictionary]? = []
     var movieSearchResults: [NSDictionary] = []
-    var isSearchActive = false
-    var isNetworkError = false
+    var isSearchActive: Bool = false
+    var isNetworkError: Bool = false
     
     // constants
     let boxOfficeUrl: String = "https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json"
@@ -97,6 +96,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         cell.titleLabel.text = movie["title"] as? String
+        cell.ratingLabel.text = movie["mpaa_rating"] as? String
         cell.synopsisLabel.text = movie["synopsis"] as? String
         let posterImageUrl = NSURL(string: movie.valueForKeyPath("posters.thumbnail") as! String)!
         // cell.posterImageView.setImageWithURL(posterImageUrl)
