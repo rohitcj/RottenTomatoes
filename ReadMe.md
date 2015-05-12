@@ -19,7 +19,6 @@ Optional
 [x] For the large poster, load the low-res image first, switch to high-res when complete.
 [ ] Customize the highlight and selection effect of the cell.
 [x] Customize the navigation bar.
-<<<<<<< HEAD
 
 Walkthrough
 https://github.com/rohitcj/RottenTomatoes/blob/master/RottenTomatoes.gif
