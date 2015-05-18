@@ -1,9 +1,9 @@
-Rotten Tomatoes (raw)
-This is a movies app displaying box office and top rental DVDs using the Rotten Tomatoes API.
+Rotten Tomatoes <br/>
+This is a movies app displaying box office and top rental DVDs using the Rotten Tomatoes API.<br/>
 
-Time spent: 16
-Features
-
+Time spent: 16 <br/>
+Features <br/>
+<br/>
 Required
 [x] User can view a list of movies. Poster images load asynchronously.
 [x] User can view movie details by tapping on a cell.
