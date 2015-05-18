@@ -22,3 +22,5 @@ Optional
 
 Walkthrough
 https://github.com/rohitcj/RottenTomatoes/blob/master/RottenTomatoes.gif
+
+![alt tag](https://raw.github.com/username/projectname/branch/path/to/img.png)
