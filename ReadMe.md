@@ -20,5 +20,6 @@ Optional<br/>
 [ ] Customize the highlight and selection effect of the cell.<br/>
 [x] Customize the navigation bar.<br/>
 <br/><br/>
-Walkthrough
+Walkthrough<br/>
+
 ![alt tag](https://github.com/rohitcj/RottenTomatoes/blob/master/RottenTomatoes.gif)
