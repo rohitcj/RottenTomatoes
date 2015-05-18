@@ -1,7 +1,7 @@
 Rotten Tomatoes <br/>
 This is a movies app displaying box office and top rental DVDs using the Rotten Tomatoes API.<br/>
 
-Time spent: 16 <br/>
+Time spent: 16 hours <br/>
 Features <br/>
 <br/>
 Required <br/>
@@ -11,7 +11,7 @@ Required <br/>
 [x] User sees error message when there is a network error: http://cl.ly/image/1l1L3M460c3C<br/>
 [x] User can pull to refresh the movie list.<br/>
 
-Optional
+Optional<br/>
 [x] Add a tab bar for Box Office and DVD.<br/>
 [ ] Implement segmented control to switch between list view and grid view.<br/>
 [x] Add a search bar.<br/>
